@@ -1,0 +1,24 @@
+const Hero = () => {
+  return (
+    <section
+      id="hero"
+      className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 bg-gradient-to-b from-transparent to-white/30 dark:to-black"
+    >
+      {/* Foto Profil */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg bg-white/30 dark:bg-white/10 backdrop-blur-md"
+      >
+        <img
+          src="/dika.jpeg"
+          alt="Profile"
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
+    </section>
+  );
+};
+
+export default Hero;
