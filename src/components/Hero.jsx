@@ -84,7 +84,7 @@ const Hero = () => {
       <Aurora />
 
       {/* Glassmorphism Card */}
-      <div className="z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 backdrop-blur-lg bg-white/20 dark:bg-black/20 rounded-3xl p-8 md:p-12 shadow-lg border border-white/20 dark:border-white/10">
+      <div className="z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 backdrop-blur-lg bg-white/5 dark:bg-black/20 rounded-3xl p-8 md:p-12 shadow-lg border border-white/20 dark:border-white/10">
         {/* Profile Image */}
         <div className="transform transition-all duration-700 hover:scale-105">
           <ProfileImage />
