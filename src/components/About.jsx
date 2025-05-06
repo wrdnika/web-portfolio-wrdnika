@@ -47,7 +47,7 @@ const About = () => {
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-white/10"
+            className="absolute rounded-full bg-white/30"
             style={{
               width: Math.random() * 30 + 10,
               height: Math.random() * 30 + 10,
@@ -112,19 +112,19 @@ const About = () => {
       {/* Card Glassmorphism with Tilt Effect */}
       <Tilt
         className="cursor-pointer mx-auto"
-        tiltMaxAngleX={5}
-        tiltMaxAngleY={5}
+        tiltMaxAngleX={10}
+        tiltMaxAngleY={10}
         perspective={1000}
         transitionSpeed={1500}
         scale={1.02}
         glareEnable={true}
-        glareMaxOpacity={0.65}
+        glareMaxOpacity={0.35}
         glareBorderRadius="20px"
         glareColor="#ffffff"
         glarePosition="all"
       >
         <motion.div
-          className="bg-white/30 dark:bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-6 md:p-10 text-sm md:text-base leading-relaxed"
+          className="bg-white/10 dark:bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-6 md:p-10 text-sm md:text-base leading-relaxed"
           variants={{
             hidden: { opacity: 0, y: 30 },
             visible: {
@@ -145,6 +145,10 @@ const About = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 1.2 }}
               viewport={{ once: true }}
+              style={{
+                textShadow:
+                  "0 0 6px rgba(34,211,238,0.8), 0 0 12px rgba(59,130,246,0.6)",
+              }}
             >
               Muhamad Andika Wardana
             </motion.span>
@@ -155,6 +159,10 @@ const About = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 1.4 }}
               viewport={{ once: true }}
+              style={{
+                textShadow:
+                  "0 0 6px rgba(236,72,153,0.8), 0 0 12px rgba(147,51,234,0.6)",
+              }}
             >
               Junior Fullstack Developer
             </motion.span>{" "}

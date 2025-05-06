@@ -6,8 +6,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   const navItems = [
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
-    { href: "#experience", label: "Pengalaman" },
-    { href: "#certification", label: "Sertifikasi" },
+    { href: "#experience", label: "Experience" },
+    { href: "#certification", label: "Certification" },
     { href: "#contact", label: "Contact" },
   ];
 

@@ -28,7 +28,9 @@ const Certification = () => {
       viewport={{ once: true }}
       variants={sectionVariant}
     >
-      <h2 className="text-3xl font-semibold mb-10 text-center">Sertifikasi</h2>
+      <h2 className="text-3xl font-semibold mb-10 text-center">
+        Certification
+      </h2>
 
       <div className="grid gap-6 max-w-4xl mx-auto px-4">
         {[

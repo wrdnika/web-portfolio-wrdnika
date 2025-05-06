@@ -13,22 +13,22 @@ const Aurora = () => {
   return (
     <div className="absolute inset-0 overflow-hidden -z-10">
       <motion.div
-        className="absolute top-0 -left-4 w-72 h-72 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-tr from-green-300 via-blue-400 to-purple-500"
+        className="absolute top-0 -left-4 w-80 h-80 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-tr from-green-300 via-blue-400 to-purple-500"
         animate={{ x: [0, 40, -40, 0], y: [0, 30, -30, 0] }}
         transition={blobTransition}
       />
       <motion.div
-        className="absolute top-0 -right-4 w-72 h-72 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-br from-yellow-300 via-red-400 to-pink-500"
+        className="absolute top-0 -right-4 w-80 h-80 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-br from-yellow-300 via-red-400 to-pink-500"
         animate={{ x: [0, -40, 40, 0], y: [0, -30, 30, 0] }}
         transition={{ ...blobTransition, delay: 2 }}
       />
       <motion.div
-        className="absolute -bottom-0 left-20 w-72 h-72 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-tl from-blue-300 via-indigo-400 to-pink-600"
+        className="absolute -bottom-0 left-20 w-80 h-80 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-tl from-blue-300 via-indigo-400 to-pink-600"
         animate={{ x: [0, 30, -30, 0], y: [0, 35, -35, 0] }}
         transition={{ ...blobTransition, delay: 4 }}
       />
       <motion.div
-        className="absolute -bottom-0 right-20 w-72 h-72 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-t from-green-300 via-teal-400 to-blue-600"
+        className="absolute -bottom-0 right-20 w-80 h-80 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-t from-green-300 via-teal-400 to-blue-600"
         animate={{ x: [0, -30, 30, 0], y: [0, -35, 35, 0] }}
         transition={{ ...blobTransition, delay: 6 }}
       />
@@ -84,7 +84,7 @@ const Hero = () => {
       <Aurora />
 
       {/* Glassmorphism Card */}
-      <div className="z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 backdrop-blur-lg bg-white/5 dark:bg-black/20 rounded-3xl p-8 md:p-12 shadow-lg border border-white/20 dark:border-white/10">
+      <div className="z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 backdrop-blur-lg bg-black/5 dark:bg-black/20 rounded-3xl p-8 md:p-12 shadow-lg border border-white/20 dark:border-white/10">
         {/* Profile Image */}
         <div className="transform transition-all duration-700 hover:scale-105">
           <ProfileImage />
@@ -104,8 +104,7 @@ const Hero = () => {
             </h1>
             <p className="text-lg md:text-xl mb-6">
               A passionate{" "}
-              <span className="font-semibold">Fullstack Developer</span> and
-              student at Universitas Pamulang.
+              <span className="font-semibold">Fullstack Developer</span>
             </p>
 
             <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">

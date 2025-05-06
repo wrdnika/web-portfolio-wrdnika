@@ -79,7 +79,7 @@ const Skills = () => {
       <div className="mb-10 text-center">
         <h3 className="text-xl font-semibold mb-2">Tools</h3>
         <p className="text-gray-600 dark:text-gray-400">
-          MS Word, Excel, Spreadsheet, Trello
+          MS Word, Excel, Spreadsheet, Trello, Canva, Figma
         </p>
       </div>
 
@@ -94,10 +94,17 @@ const Skills = () => {
         {techStackIcons.map(({ icon, name }, i) => (
           <Tilt
             key={name}
+            className="cursor-pointer mx-auto"
+            tiltMaxAngleX={15}
+            tiltMaxAngleY={15}
+            perspective={1000}
+            transitionSpeed={1500}
+            scale={1.02}
             glareEnable={true}
-            glareMaxOpacity={0.2}
+            glareMaxOpacity={0.35}
             glareBorderRadius="20px"
-            scale={1.05}
+            glareColor="#ffffff"
+            glarePosition="all"
           >
             <motion.div
               custom={i}
