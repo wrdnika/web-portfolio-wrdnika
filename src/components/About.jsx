@@ -42,34 +42,6 @@ const About = () => {
         },
       }}
     >
-      {/* Animated background particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white/30"
-            style={{
-              width: Math.random() * 30 + 10,
-              height: Math.random() * 30 + 10,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, Math.random() * -100 - 50],
-              x: [0, Math.random() * 50 - 25],
-              opacity: [0.7, 0],
-              scale: [1, Math.random() * 0.5 + 0.5],
-            }}
-            transition={{
-              duration: Math.random() * 5 + 10,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-
       {/* Garis kecil dekoratif dengan animasi */}
       <motion.div
         className="w-14 h-1 bg-white/30 mx-auto mb-4 rounded-full"
