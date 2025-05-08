@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo, useMemo } from "react";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 import {
@@ -22,7 +22,8 @@ import {
   SiGitlab,
 } from "react-icons/si";
 
-const techStackIcons = [
+// Tech stack icons list
+const TECH_STACK = [
   { icon: <SiHtml5 />, name: "HTML5" },
   { icon: <SiCss3 />, name: "CSS3" },
   { icon: <SiJavascript />, name: "JavaScript" },
@@ -43,28 +44,38 @@ const techStackIcons = [
   { icon: <SiGitlab />, name: "GitLab" },
 ];
 
-const sectionVariant = {
+// Variants for section and icons
+const SECTION_VARIANTS = {
   hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-const iconVariants = {
+const ICON_VARIANTS = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: (i) => ({
     opacity: 1,
     scale: 1,
-    transition: {
-      delay: i * 0.05,
-      duration: 0.3,
-    },
+    transition: { delay: i * 0.05, duration: 0.3 },
   }),
 };
 
+// Tilt default props
+const TILT_PROPS = {
+  tiltMaxAngleX: 15,
+  tiltMaxAngleY: 15,
+  perspective: 1000,
+  transitionSpeed: 1500,
+  scale: 1.02,
+  glareEnable: true,
+  glareMaxOpacity: 0.35,
+  glareBorderRadius: "20px",
+  glareColor: "#ffffff",
+  glarePosition: "all",
+};
+
 const Skills = () => {
+  const techItems = useMemo(() => TECH_STACK, []);
+
   return (
     <motion.section
       id="skills"
@@ -72,7 +83,7 @@ const Skills = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      variants={sectionVariant}
+      variants={SECTION_VARIANTS}
     >
       <h2 className="text-3xl font-semibold mb-6 text-center">Skills</h2>
 
@@ -86,36 +97,23 @@ const Skills = () => {
       <h3 className="text-xl font-semibold text-center mb-2">Tech Stack</h3>
       <p className="text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto mb-8">
         Programming languages: Html, Css, JavaScript, PHP, Dart.
-        <br></br>
+        <br />
         Here are the technologies and tools I use in web and app development.
       </p>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-6 justify-items-center">
-        {techStackIcons.map(({ icon, name }, i) => (
-          <Tilt
-            key={name}
-            className="cursor-pointer mx-auto"
-            tiltMaxAngleX={15}
-            tiltMaxAngleY={15}
-            perspective={1000}
-            transitionSpeed={1500}
-            scale={1.02}
-            glareEnable={true}
-            glareMaxOpacity={0.35}
-            glareBorderRadius="20px"
-            glareColor="#ffffff"
-            glarePosition="all"
-          >
+        {techItems.map(({ icon, name }, i) => (
+          <Tilt key={name} className="cursor-pointer mx-auto" {...TILT_PROPS}>
             <motion.div
               custom={i}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={iconVariants}
+              variants={ICON_VARIANTS}
               className="flex flex-col items-center gap-2 w-28 h-28 p-4 backdrop-blur-md bg-white/10 dark:bg-white/5 border border-white/10 rounded-2xl shadow-md transition-transform hover:rotate-[2deg] hover:scale-110"
             >
-              <div className="text-4xl ">{icon}</div>
-              <span className="text-sm text-center ">{name}</span>
+              <div className="text-4xl">{icon}</div>
+              <span className="text-sm text-center">{name}</span>
             </motion.div>
           </Tilt>
         ))}
@@ -124,4 +122,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+export default memo(Skills);
