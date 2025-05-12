@@ -7,7 +7,7 @@ const SECTION_VARIANTS = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-const EXPERIENCE_VARIANTS = {
+const WORK_EXPERIENCE_VARIANTS = {
   hidden: { opacity: 0, x: -50 },
   visible: (i) => ({
     opacity: 1,
@@ -16,8 +16,7 @@ const EXPERIENCE_VARIANTS = {
   }),
 };
 
-// Static experience data
-const EXPERIENCES = [
+const WORK_EXPERIENCES = [
   {
     title: "Tracking Location Web App",
     stack: "Vue.js, Tailwind, Vite",
@@ -32,20 +31,19 @@ const EXPERIENCES = [
   },
   {
     title: "Management Asset Web App",
-    stack: "Laravel Blade",
+    stack: "Laravel Blade, Bootstrap",
     companyLogo: "/DDT.png",
     companyName: "PT. Delta Digital Technology",
   },
 ];
 
-// Memoized card component
-const ExperienceCard = memo(({ exp, index }) => (
+const WorkExperienceCard = memo(({ exp, index }) => (
   <motion.div
     custom={index}
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true }}
-    variants={EXPERIENCE_VARIANTS}
+    variants={WORK_EXPERIENCE_VARIANTS}
     className="mb-10 ml-6 relative"
   >
     <div className="p-5 rounded-2xl backdrop-blur-md bg-white/10 dark:bg-white/5 shadow border border-white/10">
@@ -68,8 +66,8 @@ const ExperienceCard = memo(({ exp, index }) => (
   </motion.div>
 ));
 
-const Experience = () => {
-  const experiences = useMemo(() => EXPERIENCES, []);
+const WorkExperience = () => {
+  const workexperiences = useMemo(() => WORK_EXPERIENCES, []);
 
   return (
     <motion.section
@@ -80,15 +78,17 @@ const Experience = () => {
       viewport={{ once: true }}
       variants={SECTION_VARIANTS}
     >
-      <h2 className="text-3xl font-semibold mb-12 text-center">Experience</h2>
+      <h2 className="text-3xl font-semibold mb-12 text-center">
+        Work Experience
+      </h2>
 
       <div className="relative border-l-4 max-w-3xl mx-auto px-4">
-        {experiences.map((exp, idx) => (
-          <ExperienceCard key={idx} exp={exp} index={idx} />
+        {workexperiences.map((exp, idx) => (
+          <WorkExperienceCard key={idx} exp={exp} index={idx} />
         ))}
       </div>
     </motion.section>
   );
 };
 
-export default memo(Experience);
+export default memo(WorkExperience);

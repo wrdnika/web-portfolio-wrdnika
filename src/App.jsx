@@ -6,8 +6,8 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
-import Project from "./components/Project";
-import Experience from "./components/Experience";
+import PersonalExperience from "./components/PersonalExperience";
+import WorkExperience from "./components/WorkExperience";
 import Certification from "./components/Certification";
 
 // Animation variant for sections
@@ -107,8 +107,8 @@ export default function App() {
         <Hero />
         <About />
         <Skills />
-        <Project />
-        <Experience />
+        <PersonalExperience />
+        <WorkExperience />
         <Certification />
         {contactSection}
         <footer className="text-center py-6 text-sm opacity-60">
