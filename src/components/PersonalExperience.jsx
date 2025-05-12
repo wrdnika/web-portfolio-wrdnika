@@ -123,9 +123,7 @@ const PersonalExperience = () => {
       viewport={{ once: true }}
       variants={SECTION_VARIANTS}
     >
-      <h2 className="text-3xl font-semibold mb-6 text-center">
-        Personal Experience
-      </h2>
+      <h2 className="text-3xl font-semibold mb-6 text-center">Experience</h2>
       <div className="grid gap-6 px-4 sm:grid-cols-2 lg:grid-cols-3">
         {experiences.map((exp, idx) => (
           <ExperienceCard key={exp.name} experience={exp} index={idx} />

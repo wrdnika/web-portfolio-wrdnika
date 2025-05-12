@@ -96,7 +96,7 @@ const Skills = () => {
 
       <h3 className="text-xl font-semibold text-center mb-2">Tech Stack</h3>
       <p className="text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto mb-8">
-        Programming languages: Html, Css, JavaScript, PHP, Dart.
+        Programming: Html, Css, JavaScript, PHP, Dart.
         <br />
         Here are the technologies and tools I use in web and app development.
       </p>

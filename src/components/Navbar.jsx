@@ -4,8 +4,8 @@ import { FiMoon, FiSun, FiMenu, FiX } from "react-icons/fi";
 // Static nav items
 const NAV_ITEMS = [
   { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
+  { href: "#personal-experience", label: "Experience" },
+  { href: "#experience", label: "Work Experience" },
   { href: "#certification", label: "Certification" },
   { href: "#contact", label: "Contact" },
 ];
