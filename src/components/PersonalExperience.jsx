@@ -32,6 +32,13 @@ const TILT_PROPS = {
 
 const EXPERIENCES = [
   {
+    name: "Media Downloader",
+    github: "https://github.com/wrdnika/tiktok-instagram-media-downloader",
+    desc: "A responsive web application built with React and Tailwind CSS that allows users to download media from TikTok and Instagram without watermarks. Featuring dark/light mode toggle, neumorphism design, and clipboard integration for fast and intuitive downloading experience.",
+    preview: "https://tiktok-instagram-media-downloader.vercel.app",
+    image: "/IMG-PE/media-dl.png",
+  },
+  {
     name: "Donation App Android",
     github: "https://github.com/wrdnika/mobile-donation-app-flutter",
     desc: "A mobile donation platform built using Flutter, integrated with Supabase as the backend service and Midtrans for secure and reliable payment processing. Users can explore donation campaigns, contribute directly from the app, and monitor their donation history.",
