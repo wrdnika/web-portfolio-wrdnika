@@ -44,19 +44,38 @@ const TECH_STACK = [
   { icon: <SiGitlab />, name: "GitLab" },
 ];
 
-// Variants for section and icons
+// Section variants dengan linear easing
 const SECTION_VARIANTS = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "linear" },
+  },
 };
 
+// Grid wrapper memasang staggerChildren
+const GRID_VARIANTS = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.07,
+    },
+  },
+};
+
+// Icon variants dengan spring dan GPU hint
 const ICON_VARIANTS = {
   hidden: { opacity: 0, scale: 0.9 },
-  visible: (i) => ({
+  visible: {
     opacity: 1,
     scale: 1,
-    transition: { delay: i * 0.05, duration: 0.3 },
-  }),
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 20,
+    },
+  },
 };
 
 // Tilt default props
@@ -82,7 +101,7 @@ const Skills = () => {
       className="py-12 pt-24"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.2 }}
       variants={SECTION_VARIANTS}
     >
       <h2 className="text-3xl font-semibold mb-6 text-center">Skills</h2>
@@ -101,23 +120,37 @@ const Skills = () => {
         Here are the technologies and tools I use in web and app development.
       </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-6 justify-items-center">
+      <motion.div
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-6 justify-items-center"
+        variants={GRID_VARIANTS}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         {techItems.map(({ icon, name }, i) => (
           <Tilt key={name} className="cursor-pointer mx-auto" {...TILT_PROPS}>
             <motion.div
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
               variants={ICON_VARIANTS}
-              className="flex flex-col items-center gap-2 w-28 h-28 p-4 backdrop-blur-md bg-white/10 dark:bg-white/5 border border-white/10 rounded-2xl shadow-md transition-transform hover:rotate-[2deg] hover:scale-110"
+              className="
+                flex flex-col items-center gap-2
+                w-28 h-28 p-4
+                backdrop-blur-md bg-white/10 dark:bg-white/5
+                border border-white/10 rounded-2xl
+                shadow-md
+                hover:rotate-[2deg] hover:scale-110
+                transition-transform duration-300 ease-linear
+              "
+              style={{
+                willChange: "transform, opacity",
+                transform: "translateZ(0)",
+              }}
             >
               <div className="text-4xl">{icon}</div>
               <span className="text-sm text-center">{name}</span>
             </motion.div>
           </Tilt>
         ))}
-      </div>
+      </motion.div>
     </motion.section>
   );
 };

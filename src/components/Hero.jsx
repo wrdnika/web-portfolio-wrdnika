@@ -7,7 +7,7 @@ const BLOB_TRANSITION = {
   duration: 10,
   repeat: Infinity,
   repeatType: "mirror",
-  ease: "easeInOut",
+  ease: "linear",
 };
 
 // Definitions for aurora blobs
@@ -15,36 +15,48 @@ const AURORA_BLOBS = [
   {
     className:
       "absolute top-0 -left-4 w-80 h-80 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-tr from-green-300 via-blue-400 to-purple-500",
-    animate: { x: [0, 40, -40, 0], y: [0, 30, -30, 0] },
+    animate: {
+      translateX: [0, 40, -40, 0],
+      translateY: [0, 30, -30, 0],
+    },
     transition: { ...BLOB_TRANSITION, delay: 0 },
   },
   {
     className:
       "absolute top-0 -right-4 w-80 h-80 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-br from-yellow-300 via-red-400 to-pink-500",
-    animate: { x: [0, -40, 40, 0], y: [0, -30, 30, 0] },
+    animate: {
+      translateX: [0, -40, 40, 0],
+      translateY: [0, -30, 30, 0],
+    },
     transition: { ...BLOB_TRANSITION, delay: 2 },
   },
   {
     className:
       "absolute -bottom-0 left-20 w-80 h-80 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-tl from-blue-300 via-indigo-400 to-pink-600",
-    animate: { x: [0, 30, -30, 0], y: [0, 35, -35, 0] },
+    animate: {
+      translateX: [0, 30, -30, 0],
+      translateY: [0, 35, -35, 0],
+    },
     transition: { ...BLOB_TRANSITION, delay: 4 },
   },
   {
     className:
       "absolute -bottom-0 right-20 w-80 h-80 rounded-full filter blur-2xl opacity-70 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light bg-gradient-to-t from-green-300 via-teal-400 to-blue-600",
-    animate: { x: [0, -30, 30, 0], y: [0, -35, 35, 0] },
+    animate: {
+      translateX: [0, -30, 30, 0],
+      translateY: [0, -35, 35, 0],
+    },
     transition: { ...BLOB_TRANSITION, delay: 6 },
   },
 ];
 
-// Aurora background
 const Aurora = memo(() => (
   <div className="absolute inset-0 overflow-hidden -z-10">
     {AURORA_BLOBS.map((blob, idx) => (
       <motion.div
         key={idx}
         className={blob.className}
+        style={{ willChange: "transform" }}
         animate={blob.animate}
         transition={blob.transition}
       />
@@ -106,7 +118,10 @@ const SocialLinks = memo(() => (
 
 const Hero = () => {
   const introVariant = useMemo(
-    () => ({ initial: { x: 100, opacity: 0 }, animate: { x: 0, opacity: 1 } }),
+    () => ({
+      initial: { x: 100, opacity: 0 },
+      animate: { x: 0, opacity: 1 },
+    }),
     []
   );
 
@@ -116,15 +131,21 @@ const Hero = () => {
       className="relative min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 px-6 py-12 bg-white/5 dark:bg-black/5 backdrop-blur-sm"
     >
       <Aurora />
+
       <div className="z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 backdrop-blur-lg bg-black/5 dark:bg-black/20 rounded-3xl p-8 md:p-12 shadow-lg border border-white/20 dark:border-white/10">
-        <div className="transform transition-all duration-700 hover:scale-105">
+        <div
+          className="transform transition-transform duration-700 ease-linear hover:scale-105"
+          style={{ willChange: "transform" }}
+        >
           <ProfileImage />
         </div>
+
         <div className="text-center md:text-left max-w-xl">
           <motion.div
             initial={introVariant.initial}
             animate={introVariant.animate}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "linear" }}
+            style={{ willChange: "transform, opacity" }}
             className="text-center md:text-left max-w-xl"
           >
             <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
@@ -137,7 +158,8 @@ const Hero = () => {
             <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
               <a
                 href="#contact"
-                className="px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full hover:scale-105 transition"
+                className="px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full transition-transform duration-300 ease-linear hover:scale-105"
+                style={{ willChange: "transform" }}
               >
                 Contact Me
               </a>
@@ -145,12 +167,14 @@ const Hero = () => {
                 href="/cv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2 border-2 border-black dark:border-white rounded-full hover:scale-105 transition"
+                className="px-6 py-2 border-2 border-black dark:border-white rounded-full transition-transform duration-300 ease-linear hover:scale-105"
+                style={{ willChange: "transform" }}
               >
                 Download CV
               </a>
             </div>
           </motion.div>
+
           <SocialLinks />
         </div>
       </div>
