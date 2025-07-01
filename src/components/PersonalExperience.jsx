@@ -88,6 +88,13 @@ const EXPERIENCES = [
     image: "/IMG-PE/meme-puzzle.png",
   },
   {
+    name: "Weather web",
+    github: "https://github.com/wrdnika/coba-angular--weather",
+    desc: "An interactive weather map built with Angular and Leaflet, showing real-time weather across Indonesian cities using OpenWeatherMap API. Includes search, filters, and current location detection.",
+    preview: "https://cuacainka.netlify.app",
+    image: "/IMG-PE/cuaca.png",
+  },
+  {
     name: "To Do List",
     github: "https://github.com/wrdnika/To-Do-List-App",
     desc: "A minimalist and user-friendly To-Do List application that stores data in the browser's local storage. Features include task creation, editing, prioritization, deadlines, and visual cues to improve productivity. Built using Vue, Vite, and Tailwind CSS with a glassmorphism design.",
