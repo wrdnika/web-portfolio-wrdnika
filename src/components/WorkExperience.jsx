@@ -81,7 +81,7 @@ const ProjectItem = memo(({ project, index }) => (
     </div>
 
     {/* Project timeline line */}
-    {index < WORK_EXPERIENCE.projects.length - 1 && (
+    {index < WORK_EXPERIENCE.projects.length - 0 && (
       <div className="absolute left-1.5 top-5 w-0.5 h-full bg-gradient-to-b from-blue-400/50 to-purple-500/20"></div>
     )}
 
@@ -183,8 +183,6 @@ const WorkExperience = () => {
 
           {/* Projects Timeline */}
           <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-purple-500 to-transparent opacity-30"></div>
-
             <div className="space-y-0">
               {workExperience.projects.map((project, idx) => (
                 <ProjectItem key={idx} project={project} index={idx} />
