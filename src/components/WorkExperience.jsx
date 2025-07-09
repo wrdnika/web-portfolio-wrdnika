@@ -42,30 +42,44 @@ const PROJECT_VARIANTS = {
   }),
 };
 
-const WORK_EXPERIENCE = {
-  companyName: "PT. Farovon Maju Bersama",
-  companyLogo: "/DDT.png",
-  duration: "Internship Experience",
-  projects: [
-    {
-      title: "Management Assets App",
-      stack: "Laravel Blade, Bootstrap",
-      desc: "Contributed to the development of an office asset management application by working on the backend using Laravel and the frontend using Blade and Bootstrap. The app streamlines asset tracking, recording, and management processes within the company.",
-    },
-    {
-      title: "Tracking App",
-      stack: "Vanilla JS, Tailwind CSS, Leaflet, OpenWeather & BMKG APIs",
-      desc: "Worked on the frontend of a real-time tracking application using Vanilla JavaScript and Tailwind CSS. Implemented interactive maps using Leaflet, integrated OpenWeather API and BMKG API to provide up-to-date weather and earthquake information.",
-    },
-    {
-      title: "Server Monitoring Dashboard",
-      stack: "Vue.js, Tailwind CSS, Chart.js, Model Viewer",
-      desc: "Contributed to the frontend development of a server monitoring dashboard using Vue.js and Tailwind CSS. Handled API integration for server data retrieval, designed data visualization with Chart.js, and implemented 3D visual elements using Model Viewer to enhance user experience.",
-    },
-  ],
-};
+// Array of work experiences
+const WORK_EXPERIENCES = [
+  {
+    companyName: "PT. Farovon Maju Bersama",
+    companyLogo: "/DDT.png",
+    duration: "Dec 2024 - Mar 2025",
+    intro:
+      "At PT. Farovon Maju Bersama, I contributed to multiple projects involving web development, API integration, and data visualization.",
+    projects: [
+      {
+        title: "Tracking App",
+        stack: "Vanilla JS, Tailwind CSS, Leaflet, OpenWeather & BMKG APIs",
+        desc: "Worked on the frontend of a real-time tracking application using Vanilla JavaScript and Tailwind CSS. Implemented interactive maps using Leaflet, integrated OpenWeather API and BMKG API to provide up-to-date weather and earthquake information.",
+      },
+      {
+        title: "Server Monitoring Dashboard",
+        stack: "Vue.js, Tailwind CSS, Chart.js, Model Viewer",
+        desc: "Contributed to the frontend development of a server monitoring dashboard using Vue.js and Tailwind CSS. Handled API integration for server data retrieval, designed data visualization with Chart.js, and implemented 3D visual elements using Model Viewer to enhance user experience.",
+      },
+    ],
+  },
+  {
+    companyName: "PT. SIT Global Systems",
+    companyLogo: "/SIT.png",
+    duration: "June 2025 - Present",
+    intro:
+      "At PT SIT Global Systems, I contributed to the development of desktop and web-based ERP systems.",
+    projects: [
+      {
+        title: "ERP System Development",
+        stack: "Java EE, EasyMaker(from Kr), Laravel",
+        desc: "Collaborated in designing and implementing core modules of a desktop ERP application using Java EE with EasyMaker(from Kr). and Laravel for web systems",
+      },
+    ],
+  },
+];
 
-const ProjectItem = memo(({ project, index }) => (
+const ProjectItem = memo(({ project, index, total }) => (
   <motion.div
     custom={index}
     initial="hidden"
@@ -81,7 +95,7 @@ const ProjectItem = memo(({ project, index }) => (
     </div>
 
     {/* Project timeline line */}
-    {index < WORK_EXPERIENCE.projects.length - 0 && (
+    {index < total - 0 && (
       <div className="absolute left-1.5 top-5 w-0.5 h-full bg-gradient-to-b from-blue-400/50 to-purple-500/20"></div>
     )}
 
@@ -110,17 +124,10 @@ const ProjectItem = memo(({ project, index }) => (
 ));
 
 const WorkExperience = () => {
-  const workExperience = useMemo(() => WORK_EXPERIENCE, []);
+  const experiences = useMemo(() => WORK_EXPERIENCES, []);
 
   return (
-    <motion.section
-      id="experience"
-      className="py-12 pt-24"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={SECTION_VARIANTS}
-    >
+    <section id="experience" className="py-12 pt-24">
       <motion.h2
         className="text-3xl font-semibold mb-12 text-center"
         initial={{ opacity: 0, y: -20 }}
@@ -131,81 +138,83 @@ const WorkExperience = () => {
         Work Experience
       </motion.h2>
 
-      <div className="max-w-4xl mx-auto px-4">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={CARD_VARIANTS}
-          className="relative"
-          style={{ willChange: "transform, opacity" }}
-        >
-          {/* Company Card Header */}
+      <div className="max-w-4xl mx-auto px-4 space-y-16">
+        {experiences.map((exp, idx) => (
           <motion.div
-            className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 mb-8"
-            whileHover={{
-              scale: 1.01,
-              boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-              transition: { duration: 0.3 },
-            }}
+            key={idx}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={CARD_VARIANTS}
+            className="relative"
+            style={{ willChange: "transform, opacity" }}
           >
-            <div className="flex items-center gap-4 mb-4">
-              {workExperience.companyLogo && (
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <img
-                    src={workExperience.companyLogo}
-                    alt={workExperience.companyName}
-                    className="w-16 h-16 rounded-full shadow-lg border-2 border-white/20"
+            {/* Company Card Header */}
+            <motion.div
+              className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 mb-8"
+              whileHover={{
+                scale: 1.01,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                transition: { duration: 0.3 },
+              }}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                {exp.companyLogo && (
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <img
+                      src={exp.companyLogo}
+                      alt={exp.companyName}
+                      className="w-16 h-16 rounded-full shadow-lg border-2 border-white/20"
+                    />
+                  </motion.div>
+                )}
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-1">
+                    {exp.companyName}
+                  </h3>
+                  <p className="text-blue-400 font-medium">{exp.duration}</p>
+                </div>
+              </div>
+
+              <div className="text-sm text-gray-300 mb-4">
+                <p>{exp.intro}</p>
+              </div>
+            </motion.div>
+
+            {/* Projects Timeline */}
+            <div className="relative">
+              <div className="space-y-0">
+                {exp.projects.map((project, i) => (
+                  <ProjectItem
+                    key={i}
+                    project={project}
+                    index={i}
+                    total={exp.projects.length}
                   />
-                </motion.div>
-              )}
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-white mb-1">
-                  {workExperience.companyName}
-                </h3>
-                <p className="text-blue-400 font-medium">
-                  {workExperience.duration}
-                </p>
+                ))}
               </div>
             </div>
 
-            <div className="text-sm text-gray-300 mb-4">
-              <p>
-                During my internship, I contributed to multiple projects
-                involving web development, API integration, and data
-                visualization:
+            {/* Summary Footer */}
+            <motion.div
+              className="mt-8 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-400/20"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-sm text-gray-300 text-center">
+                Gained hands-on experience in full-stack development, API
+                integration, and modern web technologies
               </p>
-            </div>
+            </motion.div>
           </motion.div>
-
-          {/* Projects Timeline */}
-          <div className="relative">
-            <div className="space-y-0">
-              {workExperience.projects.map((project, idx) => (
-                <ProjectItem key={idx} project={project} index={idx} />
-              ))}
-            </div>
-          </div>
-
-          {/* Summary Footer */}
-          <motion.div
-            className="mt-8 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-400/20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-sm text-gray-300 text-center">
-              Gained hands-on experience in full-stack development, API
-              integration, and modern web technologies
-            </p>
-          </motion.div>
-        </motion.div>
+        ))}
       </div>
-    </motion.section>
+    </section>
   );
 };
 
